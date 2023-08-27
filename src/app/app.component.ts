@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'my-app';
+  currencyCode!:string;
+  getSelectedCode(code:string){
+ console.log("code changed",code);
+ this.currencyCode=code;
+  }
+  count:string="5";
 }

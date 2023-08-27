@@ -1,0 +1,15 @@
+<p>demo works!</p>
+
+<p>{{demoData}}</p>
+<p>{{9+8}}</p>
+<!--converts everything in to a string-->
+<p>{{demoData.toLowerCase()}}</p>
+
+
+<input type="text" value="{{demoData}}">
+<!--property binding:[]  //retains the datatyepe-->
+<input type="text" [value]="demoData"><br>
+
+<!--event binding-->
+<button (click)="showAlert()"></button>
+

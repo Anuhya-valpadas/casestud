@@ -1,0 +1,6 @@
+<p>product-list works!</p>
+<button (click)="updateprice()">update button</button>
+
+<div *ngFor="let item of plist">
+    <app-product [data]="item" (btnClick)="addItem($event)" [Currencycode]="code" ></app-product>
+</div>
