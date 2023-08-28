@@ -1,10 +1,21 @@
 
-<h1>gainsight1</h1>
 
 
+<!--[code]="currencyCode"-->
 <!--<app-product-list></app-product-list>-->
 <!--<app-checkout></app-checkout>-->
 <!--<input type="text" appNumbersOnly="4"/>-->
 <!--<input type="text" [appNumbersOnly]="count"/>-->
-<app-currency (CurrencySelected)="getSelectedCode($event)"></app-currency>
-<app-product-list [code]="currencyCode"></app-product-list>
+<ul>
+    <li><a routerLink="/">Home</a></li>
+    <li><a routerLink="/products">Products</a></li>
+    <li><a routerLink="/checkout">Checkout</a></li>
+</ul>
+<div>
+    <app-currency></app-currency>
+<router-outlet></router-outlet>
+</div>
+
+<!-- <app-product-list></app-product-list>
+<app-github-search></app-github-search> -->
+<!---(CurrencySelected)="getSelectedCode($event)"-->

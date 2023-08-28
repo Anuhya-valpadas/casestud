@@ -8,17 +8,20 @@ export class ConversionPipe implements PipeTransform {
   transform(value: number, code: string = 'INR') {
     if (isNaN(value)) return null;
     else {
-      switch (code) {
-        case 'USD':
-          return (value *= 0.012);
-        case 'EUR':
-          return (value *= 0.011);
-        case 'GBP':
-          return (value *= 0.0096);
-        default:
-          return value;
+      // switch (code) {
+      //   case 'USD':
+      //     return (value *= 0.012);
+      //   case 'EUR':
+      //     return (value *= 0.011);
+      //   case 'GBP':
+      //     return (value *= 0.0096);
+      //   default:
+      //     return value;
+      const rates=JSON.parse(localStorage.getItem('rates') as string);
+      return value*rates[code];
       }
+
     }
   }
 
-}
+

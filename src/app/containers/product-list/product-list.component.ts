@@ -1,6 +1,9 @@
-import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import { Component, DestroyRef, Input, OnChanges, OnInit, inject } from '@angular/core';
+import { CurrencyService } from 'src/app/services/currency.service';
 import { ProductService } from 'src/app/services/product.service';
 import { ProductType } from 'src/types';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-product-list',
@@ -9,12 +12,30 @@ import { ProductType } from 'src/types';
   providers:[ProductService],
 })
 export class ProductListComponent implements OnInit {
-@Input({required:true}) code!:string;
+code!:string;
 plist:ProductType []=[];
-constructor(private productService:ProductService){}
+currency$!:Subscription;
+destroyRef=inject(DestroyRef);
+curr$:Observable<string>;
+product$:Observable<ProductType[]>;
+
+constructor(private productService:ProductService,
+  private currencyService:CurrencyService
+  ){
+    this.curr$=this.currencyService.currencyObservable;
+    this.product$=this.productService.getProducts();
+  }
   ngOnInit():void{
     this.getData();
+    //this.currencyService.currencyObservable.subscribe(
+      //(code)=>(this.code=code)
+   // )
+   this.currencyService.currencyObservable.pipe(takeUntilDestroyed(this.destroyRef)).
+   subscribe((code)=>(this.code=code));
   }
+  ngOnDestroy():void
+  {
+}
 
 getData(){
   this.productService.getProducts().subscribe(
