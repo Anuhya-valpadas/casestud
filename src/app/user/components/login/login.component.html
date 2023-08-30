@@ -1,0 +1,8 @@
+<form [formGroup]="loginForm" (submit)="login()" errorTailor>
+    <label for>Email</label>
+    <input type="text" formControlName="email"><br>
+    <label for>Password</label>
+    <input type="text" formControlName="password"><br>
+    <button type="submit">Sign in</button>
+    </form>
+    

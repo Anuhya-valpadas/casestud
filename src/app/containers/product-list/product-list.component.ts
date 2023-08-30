@@ -4,6 +4,7 @@ import { ProductService } from 'src/app/services/product.service';
 import { ProductType } from 'src/types';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Observable, Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-list',
@@ -20,11 +21,17 @@ curr$:Observable<string>;
 product$:Observable<ProductType[]>;
 
 constructor(private productService:ProductService,
-  private currencyService:CurrencyService
+  private currencyService:CurrencyService,
+  private router:Router
   ){
     this.curr$=this.currencyService.currencyObservable;
     this.product$=this.productService.getProducts();
   }
+  addItem(data:any)
+{
+  console.log('add item to cart',data);
+  this.router.navigateByUrl('/cart');
+}
   ngOnInit():void{
     this.getData();
     //this.currencyService.currencyObservable.subscribe(
@@ -47,10 +54,7 @@ getData(){
       console.log('error',err);
     });   
 }
-addItem(data:any)
-{
-  console.log('add item to cart',data);
-}
+
 updateprice()
 {
   
