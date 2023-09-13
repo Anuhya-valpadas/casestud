@@ -1,10 +1,62 @@
-<p>product-list works!</p>
-<button (click)="updateprice()">update button</button>
+<!-- <p>product-list works!</p> -->
+<!-- <button (click)="updateprice()" class="btn btn-success btn-sm text-right">update button</button><br> -->
+<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+    <button (click)="updateprice()"class="btn btn-primary me-md-2" type="button">Update button</button>
+    <input type="text"  [(ngModel)]="filteredname" >
+    <select [(ngModel)]="sortby">
+        <option value="productName">productname</option>
+        <option value="productSalePrice">productprice</option>
+        
+      </select>
+      
+  </div>
 
-
-<div *ngIf="curr$ | async as code">
-    <div *ngFor="let item of plist">
+<!-- <input type="text"  [(ngModel)]="filteredname" class="form-control me-2"> -->
+<div class="container text-center">
+<div *ngIf="curr$ | async as code" class="row">
+    
+    <div *ngFor="let item of plist | filter:filteredname:'productName'|sort:sortby " class="col-3">
         <app-product [data]="item" (btnClick)="addItem($event)" 
         [Currencycode]="code" ></app-product>
     </div>
 </div>
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+      <li class="page-item">
+        <a class="page-link" href="#" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+        </a>
+      </li>
+      <li class="page-item"><a class="page-link" href="#">1</a></li>
+      <li class="page-item"><a class="page-link" href="#">2</a></li>
+      <li class="page-item"><a class="page-link" href="#">3</a></li>
+      <li class="page-item"><a class="page-link" href="#">4</a></li>
+      <li class="page-item"><a class="page-link" href="#">5</a></li>
+      <li class="page-item">
+        <a class="page-link" href="#" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div>
+
+<!-- <nav aria-label="Page navigation example">
+    <ul class="pagination">
+      <li class="page-item">
+        <a class="page-link" href="#" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+        </a>
+      </li>
+      <li class="page-item"><a class="page-link" href="#">1</a></li>
+      <li class="page-item"><a class="page-link" href="#">2</a></li>
+      <li class="page-item"><a class="page-link" href="#">3</a></li>
+      <li class="page-item"><a class="page-link" href="#">4</a></li>
+      <li class="page-item"><a class="page-link" href="#">5</a></li>
+      <li class="page-item">
+        <a class="page-link" href="#" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+        </a>
+      </li>
+    </ul>
+  </nav> -->

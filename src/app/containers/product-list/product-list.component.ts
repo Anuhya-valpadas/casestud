@@ -1,4 +1,4 @@
-import { Component, DestroyRef, Input, OnChanges, OnInit, inject } from '@angular/core';
+import { ChangeDetectionStrategy,Component, DestroyRef, Input, OnChanges, OnInit,SimpleChanges, inject } from '@angular/core';
 import { CurrencyService } from 'src/app/services/currency.service';
 import { ProductService } from 'src/app/services/product.service';
 import { ProductType } from 'src/types';
@@ -12,13 +12,16 @@ import { Router } from '@angular/router';
   styleUrls: ['./product-list.component.css'],
   providers:[ProductService],
 })
-export class ProductListComponent implements OnInit {
+export class ProductListComponent{
 code!:string;
 plist:ProductType []=[];
 currency$!:Subscription;
 destroyRef=inject(DestroyRef);
 curr$:Observable<string>;
 product$:Observable<ProductType[]>;
+filteredname="";
+sortby="";
+
 
 constructor(private productService:ProductService,
   private currencyService:CurrencyService,
@@ -53,15 +56,24 @@ getData(){
     (err)=>{
       console.log('error',err);
     });   
+    
 }
 
 updateprice()
 {
+  const product = this.plist[0];
+    product.productSalePrice = 800;
+    this.plist = [{ ...product }, this.plist[1]];
   
 }
 detectChangeDetection(){
-  console.log('product price change detected')
+  console.log('product price change detected');
 }
 
-}
 
+
+
+
+
+
+}

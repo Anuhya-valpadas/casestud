@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { DemoComponent } from './demo/demo.component';
 import { ProductComponent } from './components/product/product.component';
@@ -23,6 +23,9 @@ import { UiModule } from './ui/ui.module';
 import { LoginButtonsComponent } from './components/login-buttons/login-buttons.component';
 import { HttpLoaderInterceptor } from './services/http-loader.interceptor';
 import { LoaderModule } from './loader/loader.module';
+import {FilterPipe } from './filter.pipe';
+import { SortPipe } from './sort.pipe';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -42,6 +45,8 @@ import { LoaderModule } from './loader/loader.module';
     ErrorPageComponent,
     ProductDetailComponent,
     LoginButtonsComponent,
+    FilterPipe,
+    SortPipe,
   
   ],
   imports: [
@@ -52,7 +57,8 @@ import { LoaderModule } from './loader/loader.module';
     AppRoutingModule,
     UiModule,
     LoaderModule,
-  
+    FormsModule,
+    NgxPaginationModule,
   ],
   providers: [
     //services

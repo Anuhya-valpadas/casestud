@@ -1,3 +1,9 @@
-<select (change)="getSelectedCode($event)">
+
+<!-- <select (change)="getSelectedCode($event)" >
     <option *ngFor="let c of codes">{{c}}</option>
-</select>
+</select> -->
+<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+    <select (change)="getSelectedCode($event)" >
+        <option *ngFor="let c of codes">{{c}}</option>
+    </select>
+    </div>

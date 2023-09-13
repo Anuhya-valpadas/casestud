@@ -6,11 +6,23 @@
 <!--<app-checkout></app-checkout>-->
 <!--<input type="text" appNumbersOnly="4"/>-->
 <!--<input type="text" [appNumbersOnly]="count"/>-->
-<ul>
-    <li><a routerLink="/">Home</a></li>
-    <li><a routerLink="/products">Products</a></li>
-    <li><a routerLink="/checkout">Checkout</a></li>
-</ul>
+<nav class="navbar navbar-expand-lg bg-body-tertiary" >
+    <div class="container-fluid" style="background-color:dodgerblue;">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+                <a class="nav-link active" routerLink="/">Home</a>
+            </li>
+            <li class="nav-item"><a class="nav-link active" routerLink="/products">Products</a></li>
+            <li class="nav-item"><a class="nav-link active" routerLink="/checkout">Checkout</a></li>
+            
+        </ul>
+    
+    </div>
+
+
+</nav>
+    
+
 <div>
     <app-login-buttons></app-login-buttons>
     <app-currency></app-currency>

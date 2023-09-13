@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { ProductType } from 'src/types';
 
+
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
@@ -21,4 +22,5 @@ this.btnClick.emit({
   detectChangeDetection(){
     console.log('product price change detected')
   }
+  // filteredname =" ";
 }

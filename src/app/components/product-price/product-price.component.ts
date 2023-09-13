@@ -13,7 +13,8 @@ export class ProductPriceComponent {
 
 
 detectChangeDetection(){
-  console.log('product price change detected')
+  console.log('product price change detected');
+  
 }
 
 }
